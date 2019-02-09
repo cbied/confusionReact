@@ -3,7 +3,9 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
 	render() {
-        const dish = this.props.selectedDish
+
+		const dish = this.props.selectedDish
+
 		if(dish == null) return <div></div>
 
 		return (
@@ -20,18 +22,20 @@ class DishDetail extends Component {
 					</div>
 					<div className='col-12 col-md-5 m-1'>
 					<h4>Customer Comments</h4>
-						{dish.comments.map((comment) => {
+						{dish.comments.map(comment => {
+								const shortDate = comment.date.slice(0,10);
 							return (
-								<div key = {comment.id}>
+								<div key={comment.id}>
 									<p className="bg-primary text-white">{comment.comment}</p>
-									<p>{` Customer: ${comment.author} , ${comment.date}`}</p>
+									<p>{`${comment.author} ${shortDate}`}</p>
 								</div>
 							)
-						})}			
+						})}
 					</div>
 				</div>
 			</div>
 		)
+		
 	}
 }
 
